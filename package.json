@@ -1,0 +1,32 @@
+{
+  "name": "html-metadata",
+  "version": "1.0.0",
+  "description": "Manage HTML metadata for PWA and SEO.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "generate-assets": "node generate-assets.js"
+  },
+  "bin": {
+    "html-generate-assets": "./generate-assets.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egvelho/html-metadata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egvelho/html-metadata/issues"
+  },
+  "homepage": "https://github.com/egvelho/html-metadata#readme",
+  "dependencies": {
+    "favicons": "^5.5.0",
+    "react": "^17.0.1",
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.1",
+    "typescript": "^4.1.3"
+  }
+}
