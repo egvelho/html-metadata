@@ -1,3 +1,5 @@
+import React from "react";
+
 export function MetaKeywords({ keywords }: { keywords: string[] }) {
   return (
     <>

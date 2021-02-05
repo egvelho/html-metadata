@@ -1,3 +1,5 @@
+import React from "react";
+
 export function MetaTitle({ title }: { title: string }) {
   return (
     <>

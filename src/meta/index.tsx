@@ -1,3 +1,4 @@
+import React from "react";
 import { PageMeta, App } from "../types";
 import { MetaAuthor } from "./author";
 import { MetaDescription } from "./description";
