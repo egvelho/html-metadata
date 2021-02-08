@@ -10,16 +10,8 @@
   "bin": {
     "html-generate-assets": "./generate-assets.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/egvelho/html-metadata.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/egvelho/html-metadata/issues"
-  },
-  "homepage": "https://github.com/egvelho/html-metadata#readme",
+  "author": "egvelho",
+  "license": "GPL-3.0",
   "dependencies": {
     "favicons": "^5.5.0",
     "react": "^17.0.1",
