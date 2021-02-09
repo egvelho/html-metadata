@@ -8,7 +8,7 @@
     "generate-assets": "node generate-assets.js"
   },
   "bin": {
-    "html-generate-assets": "./generate-assets.js"
+    "generate-meta-assets": "./generate-assets.js"
   },
   "author": "egvelho",
   "license": "GPL-3.0",
