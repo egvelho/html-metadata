@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const [appPath, outPath] = process.argv.slice(2);
-const app = require(appPath);
+const app = JSON.parse(fs.readFileSync(appPath));
 
 function generateAssets() {
   console.log("Just wait, it may take some minutes...");
