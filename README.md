@@ -1,2 +1,2 @@
 # html-metadata
-Manage HTML metadata for PWA and SEO.
+Manage HTML metadata for Next.js PWA and SEO.
