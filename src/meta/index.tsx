@@ -8,7 +8,9 @@ import { MetaMisc } from "./misc";
 import { MetaPageUrl } from "./page-url";
 import { MetaTitle } from "./title";
 
-export function Meta(props: PageMeta & App) {
+export type MetaProps = PageMeta & App;
+
+export function Meta(props: MetaProps) {
   return (
     <>
       <MetaAuthor author={props.developerName} />

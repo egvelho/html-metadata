@@ -1,4 +1,5 @@
-export { Meta, Meta as default } from "./meta";
+export { Meta } from "./meta";
+export type { MetaProps } from "./meta";
 export { MetaAuthor } from "./meta/author";
 export { MetaDescription } from "./meta/description";
 export { MetaImage } from "./meta/image";

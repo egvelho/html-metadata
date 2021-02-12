@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MetaTitle = exports.MetaPageUrl = exports.MetaMisc = exports.MetaKeywords = exports.MetaImage = exports.MetaDescription = exports.MetaAuthor = exports.default = exports.Meta = void 0;
+exports.MetaTitle = exports.MetaPageUrl = exports.MetaMisc = exports.MetaKeywords = exports.MetaImage = exports.MetaDescription = exports.MetaAuthor = exports.Meta = void 0;
 var meta_1 = require("./meta");
 Object.defineProperty(exports, "Meta", { enumerable: true, get: function () { return meta_1.Meta; } });
-Object.defineProperty(exports, "default", { enumerable: true, get: function () { return meta_1.Meta; } });
 var author_1 = require("./meta/author");
 Object.defineProperty(exports, "MetaAuthor", { enumerable: true, get: function () { return author_1.MetaAuthor; } });
 var description_1 = require("./meta/description");
