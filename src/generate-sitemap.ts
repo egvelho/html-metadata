@@ -7,8 +7,8 @@ interface Url {
 }
 
 async function getFiles(dir: string): Promise<string | string[]> {
-  const fs = require("fs");
-  const path = require("path");
+  const fs = eval(`require("fs")`);
+  const path = eval(`require("path")`);
 
   const dirents = fs.readdirSync(dir, { withFileTypes: true });
   const files = await Promise.all(
@@ -24,7 +24,7 @@ async function getUrls(
   files: string[],
   mapPathToImport: (path: string) => Promise<any>
 ): Promise<Array<Url>> {
-  const path = require("path");
+  const path = eval(`require("path")`);
 
   return (
     await Promise.all(
@@ -104,8 +104,8 @@ function objectToUrl<T extends Object>(url: string, object: T) {
 }
 
 function getSitemap(urls: Array<Url>) {
-  const { SitemapStream, streamToPromise } = require("sitemap");
-  const { Readable } = require("stream");
+  const { SitemapStream, streamToPromise } = eval(`require("sitemap")`);
+  const { Readable } = eval(`require("stream")`);
 
   const links = urls
     .filter(({ disallow }) => !disallow)
@@ -134,8 +134,12 @@ function getRobots(urls: Array<Url>): string {
 export async function generateSitemap(
   mapPathToImport: (path: string) => Promise<any>
 ) {
-  const path = require("path");
-  const fs = require("fs");
+  if (typeof window !== "undefined") {
+    return;
+  }
+
+  const fs = eval(`require("fs")`);
+  const path = eval(`require("path")`);
   const files = (await getFiles("./pages")) as string[];
   const urls = await getUrls(files, mapPathToImport);
   const sitemap = await getSitemap(urls);

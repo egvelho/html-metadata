@@ -9,8 +9,8 @@ function getFiles(dir) {
         return tslib_1.__generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
-                    fs = require("fs");
-                    path = require("path");
+                    fs = eval("require(\"fs\")");
+                    path = eval("require(\"path\")");
                     dirents = fs.readdirSync(dir, { withFileTypes: true });
                     return [4 /*yield*/, Promise.all(dirents.map(function (dirent) {
                             var res = path.resolve(dir, dirent.name);
@@ -30,7 +30,7 @@ function getUrls(files, mapPathToImport) {
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    path = require("path");
+                    path = eval("require(\"path\")");
                     return [4 /*yield*/, Promise.all(files
                             .map(function (file) { return "." + path.sep + path.relative(process.cwd(), file); })
                             .filter(function (file) { return !path.basename(file).startsWith("_"); })
@@ -146,8 +146,8 @@ function objectToUrl(url, object) {
     }, url);
 }
 function getSitemap(urls) {
-    var _a = require("sitemap"), SitemapStream = _a.SitemapStream, streamToPromise = _a.streamToPromise;
-    var Readable = require("stream").Readable;
+    var _a = eval("require(\"sitemap\")"), SitemapStream = _a.SitemapStream, streamToPromise = _a.streamToPromise;
+    var Readable = eval("require(\"stream\")").Readable;
     var links = urls
         .filter(function (_a) {
         var disallow = _a.disallow;
@@ -181,12 +181,15 @@ function getRobots(urls) {
 }
 function generateSitemap(mapPathToImport) {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
-        var path, fs, files, urls, sitemap, robots;
+        var fs, path, files, urls, sitemap, robots;
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    path = require("path");
-                    fs = require("fs");
+                    if (typeof window !== "undefined") {
+                        return [2 /*return*/];
+                    }
+                    fs = eval("require(\"fs\")");
+                    path = eval("require(\"path\")");
                     return [4 /*yield*/, getFiles("./pages")];
                 case 1:
                     files = (_a.sent());
