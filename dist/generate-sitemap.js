@@ -152,11 +152,12 @@ function getSitemap(urls) {
         return !disallow;
     })
         .map(function (_a) {
-        var priority = _a.priority, changefreq = _a.changefreq, url = _a.url;
+        var priority = _a.priority, changefreq = _a.changefreq, lastmod = _a.lastmod, url = _a.url;
         return ({
             url: url,
             changefreq: changefreq,
             priority: priority,
+            lastmod: lastmod,
         });
     });
     var stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_URL });

@@ -109,10 +109,11 @@ function getSitemap(urls: Array<Url>) {
 
   const links = urls
     .filter(({ disallow }) => !disallow)
-    .map(({ priority, changefreq, url }) => ({
+    .map(({ priority, changefreq, lastmod, url }) => ({
       url,
       changefreq,
       priority,
+      lastmod,
     }));
   const stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_URL });
   return streamToPromise(Readable.from(links).pipe(stream)).then((data: any) =>
