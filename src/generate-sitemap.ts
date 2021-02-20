@@ -1,8 +1,3 @@
-import path from "path";
-import fs from "fs";
-import { SitemapStream, streamToPromise } from "sitemap";
-import { Readable } from "stream";
-
 interface Url {
   disallow: boolean;
   priority: number;
@@ -12,9 +7,12 @@ interface Url {
 }
 
 async function getFiles(dir: string): Promise<string | string[]> {
+  const fs = require("fs");
+  const path = require("path");
+
   const dirents = fs.readdirSync(dir, { withFileTypes: true });
   const files = await Promise.all(
-    dirents.map((dirent) => {
+    dirents.map((dirent: any) => {
       const res = path.resolve(dir, dirent.name);
       return dirent.isDirectory() ? getFiles(res) : res;
     })
@@ -26,6 +24,8 @@ async function getUrls(
   files: string[],
   mapPathToImport: (path: string) => Promise<any>
 ): Promise<Array<Url>> {
+  const path = require("path");
+
   return (
     await Promise.all(
       files
@@ -104,6 +104,9 @@ function objectToUrl<T extends Object>(url: string, object: T) {
 }
 
 function getSitemap(urls: Array<Url>) {
+  const { SitemapStream, streamToPromise } = require("sitemap");
+  const { Readable } = require("stream");
+
   const links = urls
     .filter(({ disallow }) => !disallow)
     .map(({ priority, changefreq, url }) => ({
@@ -112,7 +115,7 @@ function getSitemap(urls: Array<Url>) {
       priority,
     }));
   const stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_URL });
-  return streamToPromise(Readable.from(links).pipe(stream)).then((data) =>
+  return streamToPromise(Readable.from(links).pipe(stream)).then((data: any) =>
     data.toString()
   );
 }
@@ -131,6 +134,8 @@ function getRobots(urls: Array<Url>): string {
 export async function generateSitemap(
   mapPathToImport: (path: string) => Promise<any>
 ) {
+  const path = require("path");
+  const fs = require("fs");
   const files = (await getFiles("./pages")) as string[];
   const urls = await getUrls(files, mapPathToImport);
   const sitemap = await getSitemap(urls);
