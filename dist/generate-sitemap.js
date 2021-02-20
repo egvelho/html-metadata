@@ -69,11 +69,9 @@ function getUrls(files, mapPathToImport) {
                                                                 };
                                                                 _b = page.getLastModificationDate;
                                                                 if (!_b) return [3 /*break*/, 2];
-                                                                return [4 /*yield*/, page
-                                                                        .getLastModificationDate(params)
-                                                                        .toISOString()];
+                                                                return [4 /*yield*/, page.getLastModificationDate(params)];
                                                             case 1:
-                                                                _b = (_h.sent());
+                                                                _b = (_h.sent()).toISOString();
                                                                 _h.label = 2;
                                                             case 2: return [2 /*return*/, (_c.lastmod = (_g = (_b)) !== null && _g !== void 0 ? _g : new Date().toISOString(),
                                                                     _c.url = "/" + objectToUrl(file, params) + "/",
@@ -102,9 +100,9 @@ function getUrls(files, mapPathToImport) {
                                         };
                                         _e = page.getLastModificationDate;
                                         if (!_e) return [3 /*break*/, 8];
-                                        return [4 /*yield*/, page.getLastModificationDate().toISOString()];
+                                        return [4 /*yield*/, page.getLastModificationDate()];
                                     case 7:
-                                        _e = (_o.sent());
+                                        _e = (_o.sent()).toISOString();
                                         _o.label = 8;
                                     case 8:
                                         _d = [

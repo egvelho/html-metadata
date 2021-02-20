@@ -50,9 +50,9 @@ async function getUrls(
                       changefreq: page.changeFrequency ?? "daily",
                       lastmod:
                         (page.getLastModificationDate &&
-                          (await page
-                            .getLastModificationDate(params)
-                            .toISOString())) ??
+                          (
+                            await page.getLastModificationDate(params)
+                          ).toISOString()) ??
                         new Date().toISOString(),
                       url: `/${objectToUrl(file, params)}/`,
                     } as Url)
@@ -68,7 +68,7 @@ async function getUrls(
                   changefreq: page.changeFrequency ?? "daily",
                   lastmod:
                     (page.getLastModificationDate &&
-                      (await page.getLastModificationDate().toISOString())) ??
+                      (await page.getLastModificationDate()).toISOString()) ??
                     new Date().toISOString(),
                   url: file === "index" ? "/" : `/${file}/`,
                 } as Url,
