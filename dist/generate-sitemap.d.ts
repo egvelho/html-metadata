@@ -1,1 +1,1 @@
-export declare function generateSitemap(): Promise<void>;
+export declare function generateSitemap(mapPathToImport: (path: string) => Promise<any>): Promise<void>;

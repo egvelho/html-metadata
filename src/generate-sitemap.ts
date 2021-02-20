@@ -22,7 +22,10 @@ async function getFiles(dir: string): Promise<string | string[]> {
   return Array.prototype.concat(...files);
 }
 
-async function getUrls(files: string[]): Promise<Array<Url>> {
+async function getUrls(
+  files: string[],
+  mapPathToImport: (path: string) => Promise<any>
+): Promise<Array<Url>> {
   return (
     await Promise.all(
       files
@@ -35,7 +38,7 @@ async function getUrls(files: string[]): Promise<Array<Url>> {
         .map((file) => file.replace(/\\/g, "/"))
         .map((file) => file.replace("./pages/", ""))
         .map(async (file) => {
-          const page = await import(`pages/${file}`);
+          const page = await mapPathToImport(file);
           const getPaths = page.getStaticPaths ?? page.getServerSidePaths;
           const urls: Array<Url> = getPaths
             ? await Promise.all(
@@ -125,9 +128,11 @@ function getRobots(urls: Array<Url>): string {
     )}\nSitemap: ${publicUrl}/sitemap.xml`;
 }
 
-export async function generateSitemap() {
+export async function generateSitemap(
+  mapPathToImport: (path: string) => Promise<any>
+) {
   const files = (await getFiles("./pages")) as string[];
-  const urls = await getUrls(files);
+  const urls = await getUrls(files, mapPathToImport);
   const sitemap = await getSitemap(urls);
   const robots = getRobots(urls);
   fs.writeFileSync(path.join("public", "sitemap.xml"), sitemap);

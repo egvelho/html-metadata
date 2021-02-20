@@ -25,7 +25,7 @@ function getFiles(dir) {
         });
     });
 }
-function getUrls(files) {
+function getUrls(files, mapPathToImport) {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var _this = this;
         return tslib_1.__generator(this, function (_a) {
@@ -46,7 +46,7 @@ function getUrls(files) {
                         var _g, _h, _j, _k, _l, _m;
                         return tslib_1.__generator(this, function (_o) {
                             switch (_o.label) {
-                                case 0: return [4 /*yield*/, Promise.resolve().then(function () { return tslib_1.__importStar(require("pages/" + file)); })];
+                                case 0: return [4 /*yield*/, mapPathToImport(file)];
                                 case 1:
                                     page = _o.sent();
                                     getPaths = (_g = page.getStaticPaths) !== null && _g !== void 0 ? _g : page.getServerSidePaths;
@@ -176,7 +176,7 @@ function getRobots(urls) {
         return "\nDisallow: " + publicUrl + url;
     }) + "\nSitemap: " + publicUrl + "/sitemap.xml";
 }
-function generateSitemap() {
+function generateSitemap(mapPathToImport) {
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var files, urls, sitemap, robots;
         return tslib_1.__generator(this, function (_a) {
@@ -184,7 +184,7 @@ function generateSitemap() {
                 case 0: return [4 /*yield*/, getFiles("./pages")];
                 case 1:
                     files = (_a.sent());
-                    return [4 /*yield*/, getUrls(files)];
+                    return [4 /*yield*/, getUrls(files, mapPathToImport)];
                 case 2:
                     urls = _a.sent();
                     return [4 /*yield*/, getSitemap(urls)];
