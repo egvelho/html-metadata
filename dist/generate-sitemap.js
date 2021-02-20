@@ -51,9 +51,13 @@ function getUrls(files, mapPathToImport) {
                                     case 1:
                                         page = _o.sent();
                                         getPaths = (_g = page.getStaticPaths) !== null && _g !== void 0 ? _g : page.getServerSidePaths;
+                                        if (getPaths && page.disallow) {
+                                            return [2 /*return*/, []];
+                                        }
                                         if (!getPaths) return [3 /*break*/, 4];
                                         _c = (_b = Promise).all;
-                                        return [4 /*yield*/, ((_h = getPaths({}).paths) === null || _h === void 0 ? void 0 : _h.map(function (_a) {
+                                        return [4 /*yield*/, getPaths({})];
+                                    case 2: return [4 /*yield*/, _c.apply(_b, [(_h = (_o.sent()).paths) === null || _h === void 0 ? void 0 : _h.map(function (_a) {
                                                 var params = _a.params;
                                                 return tslib_1.__awaiter(_this, void 0, void 0, function () {
                                                     var _b;
@@ -79,8 +83,7 @@ function getUrls(files, mapPathToImport) {
                                                         }
                                                     });
                                                 });
-                                            }))];
-                                    case 2: return [4 /*yield*/, _c.apply(_b, [_o.sent()])];
+                                            })])];
                                     case 3:
                                         _a = _o.sent();
                                         return [3 /*break*/, 5];

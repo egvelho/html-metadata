@@ -40,9 +40,14 @@ async function getUrls(
         .map(async (file) => {
           const page = await mapPathToImport(file);
           const getPaths = page.getStaticPaths ?? page.getServerSidePaths;
+
+          if (getPaths && page.disallow) {
+            return [];
+          }
+
           const urls: Array<Url> = getPaths
             ? await Promise.all(
-                await getPaths({}).paths?.map(
+                (await getPaths({})).paths?.map(
                   async ({ params }: any) =>
                     ({
                       disallow: page.disallow ?? false,
