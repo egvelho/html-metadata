@@ -146,5 +146,4 @@ export async function generateSitemap(
   const robots = getRobots(urls);
   fs.writeFileSync(path.join("public", "sitemap.xml"), sitemap);
   fs.writeFileSync(path.join("public", "robots.txt"), robots);
-  process.exit();
 }

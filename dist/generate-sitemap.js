@@ -202,7 +202,6 @@ function generateSitemap(mapPathToImport) {
                     robots = getRobots(urls);
                     fs.writeFileSync(path.join("public", "sitemap.xml"), sitemap);
                     fs.writeFileSync(path.join("public", "robots.txt"), robots);
-                    process.exit();
                     return [2 /*return*/];
             }
         });
