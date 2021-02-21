@@ -143,17 +143,17 @@ function getRobots(urls: Array<Url>): string {
 }
 
 export async function generateSitemap({
-  outDir,
+  outPath,
   mapPathToImport,
 }: {
-  outDir: string;
+  outPath: string;
   mapPathToImport: (path: string) => Promise<any>;
 }) {
   if (typeof window !== "undefined") {
     return;
   }
 
-  console.log("Generating sitemap...");
+  console.log("\nGenerating sitemap...");
 
   const fs = eval(`require("fs")`);
   const path = eval(`require("path")`);
@@ -162,11 +162,11 @@ export async function generateSitemap({
   const sitemap = await getSitemap(urls);
   const robots = getRobots(urls);
 
-  console.log(`Writing to ${outDir}/sitemap.xml`);
-  fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemap);
+  console.log(`\nWriting to ${outPath}/sitemap.xml`);
+  fs.writeFileSync(path.join(outPath, "sitemap.xml"), sitemap);
 
-  console.log(`Writing to ${outDir}/robots.txt`);
-  fs.writeFileSync(path.join(outDir, "robots.txt"), robots);
+  console.log(`\nWriting to ${outPath}/robots.txt`);
+  fs.writeFileSync(path.join(outPath, "robots.txt"), robots);
 
-  console.log("Sitemap generation success!");
+  console.log("\nSitemap generation success!");
 }
