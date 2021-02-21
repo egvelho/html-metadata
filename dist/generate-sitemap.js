@@ -184,11 +184,11 @@ function getRobots(urls) {
     }) + "\nSitemap: " + publicUrl + "/sitemap.xml";
 }
 function generateSitemap(_a) {
-    var _b = _a.outDir, outDir = _b === void 0 ? "public" : _b, mapPathToImport = _a.mapPathToImport;
+    var outDir = _a.outDir, mapPathToImport = _a.mapPathToImport;
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var fs, path, files, urls, sitemap, robots;
-        return tslib_1.__generator(this, function (_c) {
-            switch (_c.label) {
+        return tslib_1.__generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     if (typeof window !== "undefined") {
                         return [2 /*return*/];
@@ -198,13 +198,13 @@ function generateSitemap(_a) {
                     path = eval("require(\"path\")");
                     return [4 /*yield*/, getFiles("./pages")];
                 case 1:
-                    files = (_c.sent());
+                    files = (_b.sent());
                     return [4 /*yield*/, getUrls(files, mapPathToImport)];
                 case 2:
-                    urls = _c.sent();
+                    urls = _b.sent();
                     return [4 /*yield*/, getSitemap(urls)];
                 case 3:
-                    sitemap = _c.sent();
+                    sitemap = _b.sent();
                     robots = getRobots(urls);
                     console.log("Writing to " + outDir + "/sitemap.xml");
                     fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemap);

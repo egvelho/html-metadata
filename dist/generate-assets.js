@@ -1,14 +1,13 @@
-#!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateAssets = void 0;
 var tslib_1 = require("tslib");
 function generateAssets(_a) {
-    var _b = _a.appPath, appPath = _b === void 0 ? "icon.svg" : _b, _c = _a.outPath, outPath = _c === void 0 ? "public" : _c;
+    var appPath = _a.appPath, outPath = _a.outPath;
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var favicons, fs, path, app, configuration, callback;
-        return tslib_1.__generator(this, function (_d) {
-            switch (_d.label) {
+        return tslib_1.__generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
                     if (typeof window !== "undefined") {
                         return [2 /*return*/];
@@ -70,7 +69,7 @@ function generateAssets(_a) {
                             });
                         })];
                 case 1:
-                    _d.sent();
+                    _b.sent();
                     console.log("Assets generation success!");
                     return [2 /*return*/];
             }

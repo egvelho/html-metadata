@@ -1,8 +1,6 @@
-#!/usr/bin/env node
-
 export async function generateAssets({
-  appPath = "icon.svg",
-  outPath = "public",
+  appPath,
+  outPath,
 }: {
   appPath: string;
   outPath: string;

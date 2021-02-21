@@ -143,7 +143,7 @@ function getRobots(urls: Array<Url>): string {
 }
 
 export async function generateSitemap({
-  outDir = "public",
+  outDir,
   mapPathToImport,
 }: {
   outDir: string;
