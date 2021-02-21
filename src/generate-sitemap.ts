@@ -120,6 +120,11 @@ function getSitemap(urls: Array<Url>) {
       priority,
       lastmod,
     }));
+
+  if (links.length === 0) {
+    return "";
+  }
+
   const stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_URL });
   return streamToPromise(Readable.from(links).pipe(stream)).then((data: any) =>
     data.toString()
@@ -127,22 +132,28 @@ function getSitemap(urls: Array<Url>) {
 }
 
 function getRobots(urls: Array<Url>): string {
+  const disallowedUrls = urls.filter(({ url, disallow }) => disallow);
   const publicUrl = process.env.NEXT_PUBLIC_URL?.endsWith("/")
     ? process.env.NEXT_PUBLIC_URL?.slice(-1)
     : process.env.NEXT_PUBLIC_URL;
-  return `User-agent: *${urls
-    .filter(({ url, disallow }) => disallow)
-    .map(
-      ({ url }) => `\nDisallow: ${publicUrl}${url}`
-    )}\nSitemap: ${publicUrl}/sitemap.xml`;
+
+  return `User-agent: *${disallowedUrls.map(
+    ({ url }) => `\nDisallow: ${publicUrl}${url}`
+  )}\nSitemap: ${publicUrl}/sitemap.xml`;
 }
 
-export async function generateSitemap(
-  mapPathToImport: (path: string) => Promise<any>
-) {
+export async function generateSitemap({
+  outDir = "public",
+  mapPathToImport,
+}: {
+  outDir: string;
+  mapPathToImport: (path: string) => Promise<any>;
+}) {
   if (typeof window !== "undefined") {
     return;
   }
+
+  console.log("Generating sitemap...");
 
   const fs = eval(`require("fs")`);
   const path = eval(`require("path")`);
@@ -150,6 +161,12 @@ export async function generateSitemap(
   const urls = await getUrls(files, mapPathToImport);
   const sitemap = await getSitemap(urls);
   const robots = getRobots(urls);
-  fs.writeFileSync(path.join("public", "sitemap.xml"), sitemap);
-  fs.writeFileSync(path.join("public", "robots.txt"), robots);
+
+  console.log(`Writing to ${outDir}/sitemap.xml`);
+  fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemap);
+
+  console.log(`Writing to ${outDir}/robots.txt`);
+  fs.writeFileSync(path.join(outDir, "robots.txt"), robots);
+
+  console.log("Sitemap generation success!");
 }

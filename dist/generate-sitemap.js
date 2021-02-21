@@ -163,6 +163,9 @@ function getSitemap(urls) {
             lastmod: lastmod,
         });
     });
+    if (links.length === 0) {
+        return "";
+    }
     var stream = new SitemapStream({ hostname: process.env.NEXT_PUBLIC_URL });
     return streamToPromise(Readable.from(links).pipe(stream)).then(function (data) {
         return data.toString();
@@ -170,40 +173,44 @@ function getSitemap(urls) {
 }
 function getRobots(urls) {
     var _a, _b;
-    var publicUrl = ((_a = process.env.NEXT_PUBLIC_URL) === null || _a === void 0 ? void 0 : _a.endsWith("/")) ? (_b = process.env.NEXT_PUBLIC_URL) === null || _b === void 0 ? void 0 : _b.slice(-1) : process.env.NEXT_PUBLIC_URL;
-    return "User-agent: *" + urls
-        .filter(function (_a) {
+    var disallowedUrls = urls.filter(function (_a) {
         var url = _a.url, disallow = _a.disallow;
         return disallow;
-    })
-        .map(function (_a) {
+    });
+    var publicUrl = ((_a = process.env.NEXT_PUBLIC_URL) === null || _a === void 0 ? void 0 : _a.endsWith("/")) ? (_b = process.env.NEXT_PUBLIC_URL) === null || _b === void 0 ? void 0 : _b.slice(-1) : process.env.NEXT_PUBLIC_URL;
+    return "User-agent: *" + disallowedUrls.map(function (_a) {
         var url = _a.url;
         return "\nDisallow: " + publicUrl + url;
     }) + "\nSitemap: " + publicUrl + "/sitemap.xml";
 }
-function generateSitemap(mapPathToImport) {
+function generateSitemap(_a) {
+    var _b = _a.outDir, outDir = _b === void 0 ? "public" : _b, mapPathToImport = _a.mapPathToImport;
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var fs, path, files, urls, sitemap, robots;
-        return tslib_1.__generator(this, function (_a) {
-            switch (_a.label) {
+        return tslib_1.__generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
                     if (typeof window !== "undefined") {
                         return [2 /*return*/];
                     }
+                    console.log("Generating sitemap...");
                     fs = eval("require(\"fs\")");
                     path = eval("require(\"path\")");
                     return [4 /*yield*/, getFiles("./pages")];
                 case 1:
-                    files = (_a.sent());
+                    files = (_c.sent());
                     return [4 /*yield*/, getUrls(files, mapPathToImport)];
                 case 2:
-                    urls = _a.sent();
+                    urls = _c.sent();
                     return [4 /*yield*/, getSitemap(urls)];
                 case 3:
-                    sitemap = _a.sent();
+                    sitemap = _c.sent();
                     robots = getRobots(urls);
-                    fs.writeFileSync(path.join("public", "sitemap.xml"), sitemap);
-                    fs.writeFileSync(path.join("public", "robots.txt"), robots);
+                    console.log("Writing to " + outDir + "/sitemap.xml");
+                    fs.writeFileSync(path.join(outDir, "sitemap.xml"), sitemap);
+                    console.log("Writing to " + outDir + "/robots.txt");
+                    fs.writeFileSync(path.join(outDir, "robots.txt"), robots);
+                    console.log("Sitemap generation success!");
                     return [2 /*return*/];
             }
         });

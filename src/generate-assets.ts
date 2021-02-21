@@ -1,15 +1,22 @@
 #!/usr/bin/env node
 
-const favicons = require("favicons");
-const fs = require("fs");
-const path = require("path");
+export async function generateAssets({
+  appPath = "icon.svg",
+  outPath = "public",
+}: {
+  appPath: string;
+  outPath: string;
+}) {
+  if (typeof window !== "undefined") {
+    return;
+  }
 
-const [appPath, outPath] = process.argv.slice(2);
-const app = JSON.parse(fs.readFileSync(appPath));
+  console.log("Generating meta assets...");
 
-function generateAssets() {
-  console.log("Just wait, it may take some minutes...");
-
+  const favicons = eval('require("favicons")');
+  const fs = eval('require("fs")');
+  const path = eval('require("path")');
+  const app = JSON.parse(fs.readFileSync(appPath));
   const configuration = {
       path: "/",
       appName: app.name,
@@ -41,7 +48,7 @@ function generateAssets() {
         yandex: false,
       },
     },
-    callback = (error, response) => {
+    callback = (error: Error, response: any) => {
       if (error) {
         console.error(error.message);
         return;
@@ -49,16 +56,20 @@ function generateAssets() {
 
       [...response.images, ...response.files].forEach(({ name, contents }) => {
         console.log(`Writing to ${outPath}/${name}...`);
-        fs.writeFile(
-          path.join(outPath, name),
-          contents,
-          "binary",
-          (error) => error && console.log(error)
-        );
+        fs.writeFileSync(path.join(outPath, name), contents, "binary");
       });
     };
 
-  favicons(app.iconPath, configuration, callback);
-}
+  await new Promise((resolve) =>
+    favicons(
+      app.iconPath,
+      configuration,
+      (...args: Parameters<typeof callback>) => {
+        callback(...args);
+        resolve(undefined);
+      }
+    )
+  );
 
-generateAssets();
+  console.log("Assets generation success!");
+}

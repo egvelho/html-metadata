@@ -4,11 +4,7 @@
   "description": "Manage HTML metadata for Next.js PWA and SEO.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "generate-assets": "node generate-assets.js"
-  },
-  "bin": {
-    "generate-meta-assets": "./generate-assets.js"
+    "build": "tsc"
   },
   "author": "egvelho",
   "license": "GPL-3.0",

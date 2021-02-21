@@ -8,3 +8,4 @@ export { MetaMisc } from "./meta/misc";
 export { MetaPageUrl } from "./meta/page-url";
 export { MetaTitle } from "./meta/title";
 export { generateSitemap } from "./generate-sitemap";
+export { generateAssets } from "./generate-assets";

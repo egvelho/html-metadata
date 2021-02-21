@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateSitemap = exports.MetaTitle = exports.MetaPageUrl = exports.MetaMisc = exports.MetaKeywords = exports.MetaImage = exports.MetaDescription = exports.MetaAuthor = exports.Meta = void 0;
+exports.generateAssets = exports.generateSitemap = exports.MetaTitle = exports.MetaPageUrl = exports.MetaMisc = exports.MetaKeywords = exports.MetaImage = exports.MetaDescription = exports.MetaAuthor = exports.Meta = void 0;
 var meta_1 = require("./meta");
 Object.defineProperty(exports, "Meta", { enumerable: true, get: function () { return meta_1.Meta; } });
 var author_1 = require("./meta/author");
@@ -19,4 +19,6 @@ var title_1 = require("./meta/title");
 Object.defineProperty(exports, "MetaTitle", { enumerable: true, get: function () { return title_1.MetaTitle; } });
 var generate_sitemap_1 = require("./generate-sitemap");
 Object.defineProperty(exports, "generateSitemap", { enumerable: true, get: function () { return generate_sitemap_1.generateSitemap; } });
+var generate_assets_1 = require("./generate-assets");
+Object.defineProperty(exports, "generateAssets", { enumerable: true, get: function () { return generate_assets_1.generateAssets; } });
 //# sourceMappingURL=index.js.map
