@@ -180,37 +180,37 @@ function getRobots(urls) {
     var publicUrl = ((_a = process.env.NEXT_PUBLIC_URL) === null || _a === void 0 ? void 0 : _a.endsWith("/")) ? (_b = process.env.NEXT_PUBLIC_URL) === null || _b === void 0 ? void 0 : _b.slice(-1) : process.env.NEXT_PUBLIC_URL;
     return "User-agent: *" + disallowedUrls.map(function (_a) {
         var url = _a.url;
-        return "\nDisallow: " + publicUrl + url;
-    }) + "\nSitemap: " + publicUrl + "/sitemap.xml";
+        return "Disallow: " + publicUrl + url;
+    }) + "Sitemap: " + publicUrl + "/sitemap.xml";
 }
 function generateSitemap(_a) {
-    var outPath = _a.outPath, mapPathToImport = _a.mapPathToImport;
+    var _b = _a.outPath, outPath = _b === void 0 ? "public" : _b, mapPathToImport = _a.mapPathToImport;
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         var fs, path, files, urls, sitemap, robots;
-        return tslib_1.__generator(this, function (_b) {
-            switch (_b.label) {
+        return tslib_1.__generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
                     if (typeof window !== "undefined") {
                         return [2 /*return*/];
                     }
-                    console.log("\nGenerating sitemap...");
+                    console.log("Generating sitemap...");
                     fs = eval("require(\"fs\")");
                     path = eval("require(\"path\")");
                     return [4 /*yield*/, getFiles("./pages")];
                 case 1:
-                    files = (_b.sent());
+                    files = (_c.sent());
                     return [4 /*yield*/, getUrls(files, mapPathToImport)];
                 case 2:
-                    urls = _b.sent();
+                    urls = _c.sent();
                     return [4 /*yield*/, getSitemap(urls)];
                 case 3:
-                    sitemap = _b.sent();
+                    sitemap = _c.sent();
                     robots = getRobots(urls);
-                    console.log("\nWriting to " + outPath + "/sitemap.xml");
+                    console.log("Writing to " + outPath + "/sitemap.xml");
                     fs.writeFileSync(path.join(outPath, "sitemap.xml"), sitemap);
-                    console.log("\nWriting to " + outPath + "/robots.txt");
+                    console.log("Writing to " + outPath + "/robots.txt");
                     fs.writeFileSync(path.join(outPath, "robots.txt"), robots);
-                    console.log("\nSitemap generation success!");
+                    console.log("Sitemap generation success!");
                     return [2 /*return*/];
             }
         });

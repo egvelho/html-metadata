@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.generateAssets = void 0;
 var tslib_1 = require("tslib");
 function generateAssets(_a) {
-    var appPath = _a.appPath, outPath = _a.outPath;
+    var _b = _a === void 0 ? {} : _a, _c = _b.appPath, appPath = _c === void 0 ? "app.json" : _c, _d = _b.outPath, outPath = _d === void 0 ? "public.json" : _d;
     return tslib_1.__awaiter(this, void 0, void 0, function () {
         function callback(error, response) {
             return tslib_1.__awaiter(this, void 0, void 0, function () {
@@ -14,7 +14,7 @@ function generateAssets(_a) {
                     }
                     tslib_1.__spread(response.images, response.files).forEach(function (_a) {
                         var name = _a.name, contents = _a.contents;
-                        console.log("\nWriting to " + outPath + "/" + name + "...");
+                        console.log("Writing to " + outPath + "/" + name + "...");
                         fs.writeFileSync(path.join(outPath, name), contents, "binary");
                     });
                     return [2 /*return*/];
@@ -23,13 +23,13 @@ function generateAssets(_a) {
         }
         var favicons, fs, path, app, configuration;
         var _this = this;
-        return tslib_1.__generator(this, function (_b) {
-            switch (_b.label) {
+        return tslib_1.__generator(this, function (_e) {
+            switch (_e.label) {
                 case 0:
                     if (typeof window !== "undefined") {
                         return [2 /*return*/];
                     }
-                    console.log("\nGenerating meta assets...");
+                    console.log("Generating meta assets...");
                     favicons = eval('require("favicons")');
                     fs = eval('require("fs")');
                     path = eval('require("path")');
@@ -87,8 +87,8 @@ function generateAssets(_a) {
                             });
                         })];
                 case 1:
-                    _b.sent();
-                    console.log("\nAssets generation success!");
+                    _e.sent();
+                    console.log("Assets generation success!");
                     return [2 /*return*/];
             }
         });

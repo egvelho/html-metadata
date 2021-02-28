@@ -138,22 +138,22 @@ function getRobots(urls: Array<Url>): string {
     : process.env.NEXT_PUBLIC_URL;
 
   return `User-agent: *${disallowedUrls.map(
-    ({ url }) => `\nDisallow: ${publicUrl}${url}`
-  )}\nSitemap: ${publicUrl}/sitemap.xml`;
+    ({ url }) => `Disallow: ${publicUrl}${url}`
+  )}Sitemap: ${publicUrl}/sitemap.xml`;
 }
 
 export async function generateSitemap({
-  outPath,
+  outPath = "public",
   mapPathToImport,
 }: {
-  outPath: string;
+  outPath?: string;
   mapPathToImport: (path: string) => Promise<any>;
 }) {
   if (typeof window !== "undefined") {
     return;
   }
 
-  console.log("\nGenerating sitemap...");
+  console.log("Generating sitemap...");
 
   const fs = eval(`require("fs")`);
   const path = eval(`require("path")`);
@@ -162,11 +162,11 @@ export async function generateSitemap({
   const sitemap = await getSitemap(urls);
   const robots = getRobots(urls);
 
-  console.log(`\nWriting to ${outPath}/sitemap.xml`);
+  console.log(`Writing to ${outPath}/sitemap.xml`);
   fs.writeFileSync(path.join(outPath, "sitemap.xml"), sitemap);
 
-  console.log(`\nWriting to ${outPath}/robots.txt`);
+  console.log(`Writing to ${outPath}/robots.txt`);
   fs.writeFileSync(path.join(outPath, "robots.txt"), robots);
 
-  console.log("\nSitemap generation success!");
+  console.log("Sitemap generation success!");
 }

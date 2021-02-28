@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsc"
   },
+  "bin": {
+    "generate-assets": "./generate-assets.js"
+  },
   "author": "egvelho",
   "license": "GPL-3.0",
   "dependencies": {

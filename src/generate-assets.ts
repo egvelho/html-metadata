@@ -1,15 +1,15 @@
 export async function generateAssets({
-  appPath,
-  outPath,
+  appPath = "app.json",
+  outPath = "public.json",
 }: {
-  appPath: string;
-  outPath: string;
-}) {
+  appPath?: string;
+  outPath?: string;
+} = {}) {
   if (typeof window !== "undefined") {
     return;
   }
 
-  console.log("\nGenerating meta assets...");
+  console.log("Generating meta assets...");
 
   const favicons = eval('require("favicons")');
   const fs = eval('require("fs")');
@@ -54,7 +54,7 @@ export async function generateAssets({
     }
 
     [...response.images, ...response.files].forEach(({ name, contents }) => {
-      console.log(`\nWriting to ${outPath}/${name}...`);
+      console.log(`Writing to ${outPath}/${name}...`);
       fs.writeFileSync(path.join(outPath, name), contents, "binary");
     });
   }
@@ -69,5 +69,5 @@ export async function generateAssets({
     )
   );
 
-  console.log("\nAssets generation success!");
+  console.log("Assets generation success!");
 }
