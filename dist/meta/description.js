@@ -8,7 +8,7 @@ function MetaDescription(_a) {
     return (react_1.default.createElement(react_1.default.Fragment, null,
         react_1.default.createElement("meta", { key: "og-description", property: "og:description", content: description }),
         react_1.default.createElement("meta", { key: "twitter-description", name: "twitter:description", content: description }),
-        react_1.default.createElement("meta", { name: "twitter:image:alt", content: description }),
+        react_1.default.createElement("meta", { key: "twitter-image-alt", name: "twitter:image:alt", content: description }),
         react_1.default.createElement("meta", { key: "description", name: "description", content: description })));
 }
 exports.MetaDescription = MetaDescription;

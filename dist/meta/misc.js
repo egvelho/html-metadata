@@ -6,14 +6,14 @@ var react_1 = tslib_1.__importDefault(require("react"));
 function MetaMisc(_a) {
     var facebookAppId = _a.facebookAppId, twitterAt = _a.twitterAt, url = _a.url, name = _a.name, dashColor = _a.dashColor;
     return (react_1.default.createElement(react_1.default.Fragment, null,
-        facebookAppId && react_1.default.createElement("meta", { property: "fb:app_id", content: facebookAppId }),
-        twitterAt && react_1.default.createElement("meta", { name: "twitter:creator", content: twitterAt }),
-        twitterAt && react_1.default.createElement("meta", { name: "twitter:site", content: twitterAt }),
-        react_1.default.createElement("meta", { name: "url", content: url }),
-        react_1.default.createElement("meta", { property: "og:site_name", content: name }),
-        react_1.default.createElement("meta", { name: "application-name", content: name }),
-        react_1.default.createElement("meta", { name: "msapplication-TileColor", content: dashColor }),
-        react_1.default.createElement("meta", { name: "theme-color", content: dashColor })));
+        facebookAppId && (react_1.default.createElement("meta", { key: "fb-app-id", property: "fb:app_id", content: facebookAppId })),
+        twitterAt && (react_1.default.createElement("meta", { key: "twitter-creator", name: "twitter-creator", content: twitterAt })),
+        twitterAt && (react_1.default.createElement("meta", { key: "twitter-site", name: "twitter:site", content: twitterAt })),
+        react_1.default.createElement("meta", { key: "url", name: "url", content: url }),
+        react_1.default.createElement("meta", { key: "og-site-name", property: "og:site_name", content: name }),
+        react_1.default.createElement("meta", { key: "application-name", name: "application-name", content: name }),
+        react_1.default.createElement("meta", { key: "msapplication-tile-color", name: "msapplication-TileColor", content: dashColor }),
+        react_1.default.createElement("meta", { key: "theme-color", name: "theme-color", content: dashColor })));
 }
 exports.MetaMisc = MetaMisc;
 //# sourceMappingURL=misc.js.map
