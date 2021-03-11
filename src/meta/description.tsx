@@ -13,7 +13,11 @@ export function MetaDescription({ description }: { description: string }) {
         name="twitter:description"
         content={description}
       />
-      <meta name="twitter:image:alt" content={description} />
+      <meta
+        key="twitter-image-alt"
+        name="twitter:image:alt"
+        content={description}
+      />
       <meta key="description" name="description" content={description} />
     </>
   );
