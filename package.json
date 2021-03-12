@@ -1,6 +1,6 @@
 {
   "name": "@egvelho/next-metadata",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Manage HTML metadata for Next.js PWA and SEO.",
   "main": "dist/index.js",
   "scripts": {
@@ -13,6 +13,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "favicons": "^5.5.0",
+    "next": "^10.0.8",
     "react": "^17.0.1",
     "sitemap": "^6.4.0",
     "tslib": "^2.1.0"

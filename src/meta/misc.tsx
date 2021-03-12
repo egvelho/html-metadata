@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 export interface MetaMiscProps {
   facebookAppId?: string;
@@ -16,7 +17,7 @@ export function MetaMisc({
   dashColor,
 }: MetaMiscProps) {
   return (
-    <>
+    <Head>
       {facebookAppId && (
         <meta key="fb-app-id" property="fb:app_id" content={facebookAppId} />
       )}
@@ -39,6 +40,6 @@ export function MetaMisc({
         content={dashColor}
       />
       <meta key="theme-color" name="theme-color" content={dashColor} />
-    </>
+    </Head>
   );
 }

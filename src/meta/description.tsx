@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 
 export interface MetaDescriptionProps {
   description: string;
@@ -6,7 +7,7 @@ export interface MetaDescriptionProps {
 
 export function MetaDescription({ description }: MetaDescriptionProps) {
   return (
-    <>
+    <Head>
       <meta
         key="og-description"
         property="og:description"
@@ -23,6 +24,6 @@ export function MetaDescription({ description }: MetaDescriptionProps) {
         content={description}
       />
       <meta key="description" name="description" content={description} />
-    </>
+    </Head>
   );
 }

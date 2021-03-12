@@ -1,8 +1,9 @@
 import React from "react";
+import Head from "next/head";
 
 export function MetaStatic() {
   return (
-    <>
+    <Head>
       <meta charSet="utf-8" />
       <meta
         name="viewport"
@@ -207,6 +208,6 @@ export function MetaStatic() {
         href="/coast-228x228.png"
       />
       <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-    </>
+    </Head>
   );
 }
