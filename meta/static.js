@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.MetaStatic = void 0;
 var tslib_1 = require("tslib");
 var react_1 = tslib_1.__importDefault(require("react"));
+var head_1 = tslib_1.__importDefault(require("next/head"));
 function MetaStatic() {
-    return (react_1.default.createElement(react_1.default.Fragment, null,
+    return (react_1.default.createElement(head_1.default, null,
         react_1.default.createElement("meta", { charSet: "utf-8" }),
         react_1.default.createElement("meta", { name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" }),
         react_1.default.createElement("meta", { httpEquiv: "x-ua-compatible", content: "ie=edge" }),
