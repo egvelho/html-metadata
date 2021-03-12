@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaImage({ image }: {
+export interface MetaImageProps {
     image: string;
-}): JSX.Element;
+}
+export declare function MetaImage({ image }: MetaImageProps): JSX.Element;

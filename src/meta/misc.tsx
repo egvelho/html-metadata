@@ -1,18 +1,20 @@
 import React from "react";
 
+export interface MetaMiscProps {
+  facebookAppId?: string;
+  twitterAt?: string;
+  url: string;
+  name: string;
+  dashColor: string;
+}
+
 export function MetaMisc({
   facebookAppId,
   twitterAt,
   url,
   name,
   dashColor,
-}: {
-  facebookAppId?: string;
-  twitterAt?: string;
-  url: string;
-  name: string;
-  dashColor: string;
-}) {
+}: MetaMiscProps) {
   return (
     <>
       {facebookAppId && (

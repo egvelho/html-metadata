@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaPageUrl({ url }: {
+export interface MetaPageUrlProps {
     url: string;
-}): JSX.Element;
+}
+export declare function MetaPageUrl({ url }: MetaPageUrlProps): JSX.Element;

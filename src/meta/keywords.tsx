@@ -1,6 +1,10 @@
 import React from "react";
 
-export function MetaKeywords({ keywords }: { keywords: string[] }) {
+export interface MetaKeywordsProps {
+  keywords: string[];
+}
+
+export function MetaKeywords({ keywords }: MetaKeywordsProps) {
   return (
     <>
       <meta key="keywords" name="keywords" content={keywords.join(",")} />

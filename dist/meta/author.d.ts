@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaAuthor({ author }: {
+export interface MetaAuthorProps {
     author: string;
-}): JSX.Element;
+}
+export declare function MetaAuthor({ author }: MetaAuthorProps): JSX.Element;

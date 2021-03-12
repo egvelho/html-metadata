@@ -1,6 +1,10 @@
 import React from "react";
 
-export function MetaDescription({ description }: { description: string }) {
+export interface MetaDescriptionProps {
+  description: string;
+}
+
+export function MetaDescription({ description }: MetaDescriptionProps) {
   return (
     <>
       <meta

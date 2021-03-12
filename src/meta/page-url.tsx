@@ -1,6 +1,10 @@
 import React from "react";
 
-export function MetaPageUrl({ url }: { url: string }) {
+export interface MetaPageUrlProps {
+  url: string;
+}
+
+export function MetaPageUrl({ url }: MetaPageUrlProps) {
   return (
     <>
       <meta key="og-url" property="og:url" content={url} />

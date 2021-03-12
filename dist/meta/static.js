@@ -14,8 +14,6 @@ function MetaStatic() {
         react_1.default.createElement("meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }),
         react_1.default.createElement("link", { rel: "manifest", href: "/manifest.json" }),
         react_1.default.createElement("meta", { name: "msapplication-config", content: "/browserconfig.xml" }),
-        react_1.default.createElement("meta", { name: "language", content: "pt_br" }),
-        react_1.default.createElement("meta", { name: "geo.country", content: "BR" }),
         react_1.default.createElement("meta", { name: "twitter:card", content: "summary" }),
         react_1.default.createElement("link", { rel: "shortcut icon", href: "/favicon.ico" }),
         react_1.default.createElement("link", { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }),

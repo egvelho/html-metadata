@@ -1,8 +1,7 @@
-export interface PageMeta {
-    url: string;
-    image: string;
-    keywords: string[];
-}
+import { MetaPageUrlProps } from "./meta/page-url";
+import { MetaImageProps } from "./meta/image";
+import { MetaKeywordsProps } from "./meta/keywords";
+export declare type PageMeta = MetaKeywordsProps & MetaImageProps & MetaPageUrlProps;
 export interface App {
     name: string;
     shortName: string;

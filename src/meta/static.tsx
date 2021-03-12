@@ -15,8 +15,6 @@ export function MetaStatic() {
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <link rel="manifest" href="/manifest.json" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="language" content="pt_br" />
-      <meta name="geo.country" content="BR" />
       <meta name="twitter:card" content="summary" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link

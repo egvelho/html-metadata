@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaTitle({ title }: {
+export interface MetaTitleProps {
     title: string;
-}): JSX.Element;
+}
+export declare function MetaTitle({ title }: MetaTitleProps): JSX.Element;

@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaDescription({ description }: {
+export interface MetaDescriptionProps {
     description: string;
-}): JSX.Element;
+}
+export declare function MetaDescription({ description }: MetaDescriptionProps): JSX.Element;

@@ -1,4 +1,5 @@
 /// <reference types="react" />
-export declare function MetaKeywords({ keywords }: {
+export interface MetaKeywordsProps {
     keywords: string[];
-}): JSX.Element;
+}
+export declare function MetaKeywords({ keywords }: MetaKeywordsProps): JSX.Element;

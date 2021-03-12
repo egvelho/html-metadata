@@ -1,6 +1,10 @@
 import React from "react";
 
-export function MetaTitle({ title }: { title: string }) {
+export interface MetaTitleProps {
+  title: string;
+}
+
+export function MetaTitle({ title }: MetaTitleProps) {
   return (
     <>
       <title key="title">{title}</title>
