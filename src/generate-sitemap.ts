@@ -138,7 +138,7 @@ function getRobots(urls: Array<Url>): string {
     : process.env.NEXT_PUBLIC_URL;
 
   return `User-agent: *${disallowedUrls.map(
-    ({ url }) => `Disallow: ${publicUrl}${url}`
+    ({ url }) => `Disallow: ${publicUrl}${url}\n`
   )}Sitemap: ${publicUrl}/sitemap.xml`;
 }
 

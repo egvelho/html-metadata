@@ -180,7 +180,7 @@ function getRobots(urls) {
     var publicUrl = ((_a = process.env.NEXT_PUBLIC_URL) === null || _a === void 0 ? void 0 : _a.endsWith("/")) ? (_b = process.env.NEXT_PUBLIC_URL) === null || _b === void 0 ? void 0 : _b.slice(-1) : process.env.NEXT_PUBLIC_URL;
     return "User-agent: *" + disallowedUrls.map(function (_a) {
         var url = _a.url;
-        return "Disallow: " + publicUrl + url;
+        return "Disallow: " + publicUrl + url + "\n";
     }) + "Sitemap: " + publicUrl + "/sitemap.xml";
 }
 function generateSitemap(_a) {
