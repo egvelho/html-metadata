@@ -1,3 +1,7 @@
+/meta
+/*.d.ts
+/*.js
+/*.js.map
 public
 icon.svg
 app.json
