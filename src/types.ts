@@ -21,3 +21,5 @@ export interface App {
   lang: string;
   orientation: "portrait" | "landscape";
 }
+
+export type Json = { [key: string]: any } | Array<any>;
