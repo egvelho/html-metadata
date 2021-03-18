@@ -56,8 +56,9 @@ type Pages<Api> = {
 
 function mapLinkToPage<
   Props extends Json,
-  Query extends NextApiRequest["query"]
->(link: Link<Props, Query>): Page<Props, Query> {
+  Query extends NextApiRequest["query"],
+  Href extends "withQuery" | undefined
+>(link: Link<Props, Query, Href>): Page<Props, Query> {
   return {
     getStaticProps(getStaticProps) {
       return async (context) => ({
