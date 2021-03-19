@@ -39,6 +39,7 @@ export async function resizeImageAssets({
   sharp = eval('require("sharp")');
 
   sharp.cache(false);
+  sharp.simd(false);
 
   await Promise.all(paths.map((path) => resizeImagesFromPath(path, size)));
 
