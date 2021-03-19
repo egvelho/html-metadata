@@ -8,6 +8,7 @@ export * from "./meta/page-url";
 export * from "./meta/title";
 export { generateSitemap } from "./generate-sitemap";
 export { generateAssets } from "./generate-assets";
+export { resizeImageAssets } from "./resize-image-assets";
 export { endpoint } from "./endpoint";
 export { link } from "./link";
 export { getApiRoutes } from "./get-api-routes";
