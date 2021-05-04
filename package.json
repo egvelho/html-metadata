@@ -1,6 +1,6 @@
 {
   "name": "@egvelho/next-metadata",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Manage HTML metadata for Next.js PWA and SEO.",
   "main": "index.js",
   "scripts": {
