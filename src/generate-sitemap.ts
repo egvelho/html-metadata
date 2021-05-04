@@ -64,8 +64,17 @@ async function getUrls(
                 )
               )
             : [];
-          return urls.length > 0
-            ? urls
+          return (urls || []).length > 0
+            ? urls.reduce((stack, item) => {
+                const url = item.url;
+                const urls = stack.map(({ url }) => url);
+
+                if (urls.includes(url)) {
+                  return stack;
+                } else {
+                  return [...stack, item];
+                }
+              }, [] as typeof urls)
             : [
                 {
                   disallow: page.disallow ?? false,
