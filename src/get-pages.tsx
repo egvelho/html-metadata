@@ -10,7 +10,7 @@ import {
 import { Link, Links, ExtractLinkQuery, ExtractLinkProps } from "./link";
 import { Json } from "./types";
 
-type ChangeFrequency =
+export type ChangeFrequency =
   | "always"
   | "hourly"
   | "daily"
@@ -19,7 +19,7 @@ type ChangeFrequency =
   | "anual"
   | "never";
 
-type Page<Props, Query> = {
+export type Page<Props, Query> = {
   getStaticProps: (
     getStaticProps: (
       query: Query,
@@ -47,7 +47,7 @@ type Page<Props, Query> = {
   ) => (query: Query) => Promise<Date>;
 };
 
-type Pages<Api> = {
+export type Pages<Api> = {
   [key in keyof Api]: Page<
     ExtractLinkProps<Api[key]>,
     ExtractLinkQuery<Api[key]>

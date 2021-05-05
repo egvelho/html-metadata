@@ -9,24 +9,25 @@ import {
   Endpoints,
 } from "./endpoint";
 
-interface NextApiRequest<RequestData, ResponseData> extends BaseNextApiRequest {
+export interface NextApiRequest<RequestData, ResponseData>
+  extends BaseNextApiRequest {
   body: RequestData;
   params: RequestData;
   method: Endpoint<RequestData, ResponseData>["method"];
 }
 
-type ApiRoute<RequestData, ResponseData> = (
+export type ApiRoute<RequestData, ResponseData> = (
   callback: (
     requestData: RequestData,
     request: NextApiRequest<RequestData, ResponseData>,
-    response: NextApiResponse,
-  ) => Promise<ResponseData>,
+    response: NextApiResponse
+  ) => Promise<ResponseData>
 ) => (
   request: NextApiRequest<RequestData, ResponseData>,
-  response: NextApiResponse<ResponseData>,
+  response: NextApiResponse<ResponseData>
 ) => Promise<void>;
 
-type ApiRoutes<Api> = {
+export type ApiRoutes<Api> = {
   [key in keyof Api]: ApiRoute<
     ExtractRequestData<Api[key]>,
     ExtractResponseData<Api[key]>
@@ -34,7 +35,7 @@ type ApiRoutes<Api> = {
 };
 
 function mapEndpointToApiRoute<RequestData, ResponseData>(
-  endpoint: Endpoint<RequestData, ResponseData>,
+  endpoint: Endpoint<RequestData, ResponseData>
 ): ApiRoute<RequestData, ResponseData> {
   return (callback) => async (request, response) => {
     if (request.method === endpoint.method) {
@@ -44,8 +45,8 @@ function mapEndpointToApiRoute<RequestData, ResponseData>(
           await callback(
             { ...request.query, ...request.body },
             request,
-            response,
-          ),
+            response
+          )
         );
     }
   };
@@ -56,9 +57,9 @@ export function getApiRoutes<Api extends Endpoints<Api>>(endpoints: Api) {
     (apiRoutes, endpoint) => ({
       ...apiRoutes,
       [endpoint]: mapEndpointToApiRoute(
-        endpoints[endpoint as keyof typeof endpoints],
+        endpoints[endpoint as keyof typeof endpoints]
       ),
     }),
-    {} as ApiRoutes<Api>,
+    {} as ApiRoutes<Api>
   );
 }

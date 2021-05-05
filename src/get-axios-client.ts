@@ -12,12 +12,12 @@ import {
 } from "./endpoint";
 import { Json } from "./types";
 
-type AxiosClient<RequestData, ResponseData> = (
+export type AxiosClient<RequestData, ResponseData> = (
   requestData: RequestData,
   config?: AxiosRequestConfig
 ) => AxiosPromise<ResponseData>;
 
-type AxiosClients<Api> = {
+export type AxiosClients<Api> = {
   [key in keyof Api]: AxiosClient<
     ExtractRequestData<Api[key]>,
     ExtractResponseData<Api[key]>

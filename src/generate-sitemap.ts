@@ -1,4 +1,4 @@
-interface Url {
+export interface Url {
   disallow: boolean;
   priority: number;
   changefreq: string;
