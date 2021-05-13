@@ -1,4 +1,5 @@
 /meta
+/netlify-cms
 /*.d.ts
 /*.js
 /*.js.map
