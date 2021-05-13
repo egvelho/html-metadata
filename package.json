@@ -1,11 +1,11 @@
 {
   "name": "@egvelho/next-metadata",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "Manage HTML metadata for Next.js PWA and SEO.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf *.d.ts *.js *.js.map netlify-cms"
+    "clean": "rm -rf *.d.ts *.js *.js.map meta netlify-cms"
   },
   "bin": {
     "generate-assets": "./bin/generate-assets.js",
