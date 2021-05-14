@@ -14,3 +14,5 @@ export { link } from "./link";
 export { getApiRoutes } from "./get-api-routes";
 export { getAxiosClient } from "./get-axios-client";
 export { getPages } from "./get-pages";
+export { envEntry } from "./env-entry";
+export { createContext } from "./create-context";
