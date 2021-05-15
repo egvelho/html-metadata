@@ -1,6 +1,6 @@
 import { CmsConfig } from "netlify-cms-core";
 
-export async function loadNetlifyCMS(cmsConfig: CmsConfig) {
+export async function loadNetlifyCms(cmsConfig: CmsConfig) {
   if (document.querySelector("#nc-root") !== null) {
     window.location.reload();
     return;
